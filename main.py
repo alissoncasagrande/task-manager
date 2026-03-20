@@ -184,11 +184,8 @@ def main_loop():
         # just to see what is happening
         print(f"You pressed: {key}. Processing input...")
 
-        #
-
 # ----- STARTS HERE ------------
 if __name__ == "__main__":
     initialize_app()
     main_loop()
-
 # END SCRIPT
