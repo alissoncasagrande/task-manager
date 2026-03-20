@@ -77,9 +77,17 @@ def fill_fields(task=None):
 
     return tt
 
+def delete_task(conn, task):
+    tt = task.delete_task(conn)
+
+def update_task(conn, task):
+    ff = fill_fields(task) #returns a ff(Task) updated
+    tt = ff.update_task(conn) #update database, parameters will not be necessary, filds are ok on ff.
+    return tt
+
 def add_task(conn):
-    ff = fill_fields(None)
-    tt = Task.create_task(conn, ff.title, ff.description, ff.status)
+    ff = fill_fields(None) #create a new ff(Task) with id = None
+    tt = Task.create_task(conn, ff.title, ff.description, ff.status) #insert database, return tt (with id)
     return tt
 
 def print_view_task(connection, task_id, task_list=None):
@@ -110,11 +118,16 @@ def print_view_task(connection, task_id, task_list=None):
             if (key == '*'):
                 print("Returning to main menu...")
                 input("") # Wait for user input before returning to the main menu
-                break;
-            elif (key in ['1', '2']):
-                print(f"You pressed: {key}. Processing input...")
-                input("function not implemented yet, returning to main menu...")
-                break;
+                break
+            elif (key == '1'):
+                print("Updating Task...")
+                tt = update_task(connection,tt)
+                break
+            elif (key == '2'):
+                a = input("It will delete this task. Are you sure? (Y/N): ")
+                if (a.upper() == 'Y'):
+                    tt = delete_task(connection, tt)
+                    break
             else:
                 print(f"Invalid input: {key}. Please press * to exit.")
         #end loop
@@ -163,6 +176,7 @@ def main_loop():
                     if (c == '*'): break
                     if c != '*' and c.isdigit() and len(allTasks) > 0:
                         print_view_task(connection, int(c), allTasks)
+                        break
         elif key == '2':
             print("Adding a new task...")
             t = add_task(connection)
@@ -170,7 +184,7 @@ def main_loop():
         # just to see what is happening
         print(f"You pressed: {key}. Processing input...")
 
-
+        #
 
 # ----- STARTS HERE ------------
 if __name__ == "__main__":
