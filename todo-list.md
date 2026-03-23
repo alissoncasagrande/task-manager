@@ -1,25 +1,43 @@
-# Project: Task-Manager - TODO-LIST (Language: Portuguese-Brasil (PT-BR) )
-*This is simply a journal of ideas and execution during the development of this tool. I'll leave it in my native language, but you can translate it using an online tool if needed. Obs: dates using DD/MM/YYYY format*
+# Project: Task-Manager - TODO-LIST
+*Language: Portuguese-Brasil (PT-BR)*
+*Este arquivo funciona como um quadro Kanban simples (ToDo → Progress → Done). Datas no formato DD/MM/YYYY.*
 
+---
 
-## 📋ToDo
--	Menu simples no terminal ***Usuário escolhe opções (1–4) para executar cada operação***
--	[Nota] Create a virtual environment and install dependencies with (requirements.txt)
+## 📋 ToDo
+- [ ] Interface Desktop (Tkinter/PyQt)(roadmap)
+- [ ] Interface Web com Django (roadmap)
+- [ ] API REST para integração(roadmap)
+- [ ] Frontend moderno (React/Vue/Angular) (roadmap)
+- [ ] Deploy em AWS (EC2, RDS, S3)(roadmap)
+---
 
-## 🛠️Progress
--	*testar* - Escrever funções básicas em Python (CRUD) 
-	- criar tarefa(titulo descrição)
-	- listar_tarefas()
-	- atualizar tarefa(id, novo status)
-	- deletar tarefa()
+## 🛠️ Progress
 
-## ✅Done
-- Criar repositório chamado "task-manager" (18/03/2026)
-- Commit inicial com README, LICENSE e templates (18/03/2026)
-- Definir a tabela para as tarefas com os campos tasks( id, title, description, status, created_date, updated_date) (18/03/2026)
-- Criar um script (setup_db.py) que gera o bando e as tabelas do zero (task_manager.db) (18/03/2026)
+---
 
-📌 → destaque ou prioridade
-⚡ → tarefa urgente
+## ✅ Done
+- [x] Criar repositório chamado "task-manager" (18/03/2026)
+- [x] Commit inicial com README, LICENSE e templates (18/03/2026)
+- [x] Definir tabela `TASKS` com campos (id, title, description, status, created_date, updated_date) (18/03/2026)
+- [x] Criar script `setup_db.py` para gerar banco e tabelas do zero (task_manager.db) (18/03/2026)
+- [x] Implementar funções de criação, listagem, atualização e deleção de tarefas no terminal (20/03/2026)
+- [x] Menu simples no terminal
+  - Opção 1 → Listar tarefas ( Dentro da listagem: visualizar detalhes, editar ou deletar )
+  - Opção 2 → Criar nova tarefa
+- [x] Correção do bug em `print_view_task` (no comando if)
+- [x] Funções CRUD em Python integradas ao SQLite
+  - Criar tarefa (titulo, descrição, status)
+  - Listar tarefas
+  - Atualizar tarefa (id, status, título, descrição) [embutido na listagem]
+  - Deletar tarefa (id) [embutido na listagem]
+- [x] Validar status no código antes de salvar (além da constraint do banco)
+- [x] Adicionar feedback claro ao usuário após operações (ex.: "Tarefa criada com sucesso")
+- [x] Criar seção Roadmap público no README (futuras etapas: Django, API REST, Frontend, AWS)
+- [x] Documentar no README prints do CRUD rodando no terminal
+- [x] Versão inicial em CLI (terminal)(roadmap)
+---
+
+📌 → destaque ou prioridade  
+⚡ → tarefa urgente  
 🕒 → prazo ou data
-
