@@ -22,20 +22,61 @@ It allows users to create, view, update, and delete tasks through a basic termin
    ```
 ### Requirements
 - Python 3.x installed on your system.
-- Modules: 
+- Standard library modules:
    - sqlite3
-   - argparse
    - os
+   - datetime
 
-*Create a virtual environment and install dependencies with requirements.txt*
+> Note: All modules listed above are part of Python's standard library, no extra installation required.
 
-## How to Use It
-*Here I will explain how to use the software. Include credentials (user/pass) if necessary. Use visual aids (screenshots), if necessary.*
+## 🖥️ Como usar (CLI)
+A versão atual roda no terminal.  
+Fluxo básico:
+1. Inicie o programa com `python main.py`
+2. Escolha no menu principal:
+   - `1` → Listar tarefas
+   - `2` → Adicionar tarefa
+   - `Q` → Sair
+3. Dentro de uma tarefa, você pode editar ou excluir.
+
+## 📸 Screenshots (CLI)
+
+### Menu principal
+![Menu principal](docs/img/cli/terminal_menu.png)
+
+### Adicionar tarefa
+![Add Task](docs/img/cli/terminal_insert.png)
+
+### Listar tarefas
+![List Tasks](docs/img/cli/terminal_list.png)
+
+### Visualizar detalhes
+![View Task](docs/img/cli/terminal_details.png)
+
+### Editar tarefa
+![Edit Task](docs/img/cli/terminal_update_task.png)
+
+### Deletar tarefa
+![Delete Task](docs/img/cli/terminal_delete_task.png)
+
+---
+
+## Interfaces disponíveis
+- **CLI (Terminal)** → já implementada (prints acima)
+- **Desktop GUI (Tkinter/PyQt)** → em desenvolvimento
+- **Mobile (Kivy)** → planejada
+- **Web (Django/Flask)** → planejada
+
+## 🚀 Roadmap
+- [x] Versão inicial em CLI (terminal)
+- [ ] Interface Desktop (Tkinter/PyQt)
+- [ ] Interface Web com Django
+- [ ] API REST para integração
+- [ ] Frontend moderno (React/Vue/Angular)
+- [ ] Deploy em AWS (EC2, RDS, S3)
 
 ## Credits
-[Alisson Guindo Casagrande] https://github.com/AlissonCasagrande (2026)
-
-*References - List all references if necessary*
+[Alisson Guindo Casagrande] (https://github.com/AlissonCasagrande) (2026)
 
 ## Contribute
 Contributions are welcome!
