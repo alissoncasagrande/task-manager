@@ -9,11 +9,12 @@ Date: 2024-06-01
 License: MIT License
 '''
 
-import tkinter as tk
-from tkinter import ttk
 import sqlite3
-from tasks import Task
-from datetime import datetime
+import tkinter  as tk
+from tkinter    import ttk
+from tkinter    import messagebox
+from tasks      import Task
+from datetime   import datetime
 
 def edit_task():
     selected = tree.selection()
@@ -23,14 +24,36 @@ def edit_task():
         print("Editar tarefa:", task_id)
         # aqui você pode abrir uma janela Toplevel para editar
 
-def delete_task():
+def exclude_task():
     selected = tree.selection()
     if selected:
         values = tree.item(selected[0])['values']
         task_id = values[0]
-        print("Excluir tarefa:", task_id)
-        # aqui você chama Task.delete_task(conn, task_id)
-        status_filter()  # atualiza a tabela
+
+        # Confirmação antes de excluir
+        confirm = messagebox.askyesno("Confirm Deletion", f"Are you sure you want to delete task {task_id}?")
+        if not confirm: #if not YES, return 
+            print("Task deletion canceled")
+            return  
+
+        # if the user choose yes, 
+        # get the task by id and delete it
+        task2del = Task.get_task_by_id(conn, task_id)
+        if (task2del is not None):
+            try:
+                print("Excluir tarefa:", task_id, task2del.title)
+                task2del.delete_task(conn)
+
+            except sqlite3.IntegrityError as e:
+                print("Erro de integridade:", e)
+                messagebox.showinfo("Success", f"Task {task_id} deleted successfully!")
+            except sqlite3.IntegrityError as e:
+                messagebox.showerror("Integrity Error", f"Integrity error: {e}")
+            except sqlite3.Error as e:
+                messagebox.showerror("Database Error", f"SQLite error: {e}")
+
+        #update the table list on screen.
+        status_filter()
 
 def status_filter():
     print("Status selecionado:", status.get())
@@ -122,7 +145,7 @@ frame_buttons.grid(row=7, column=3, sticky="wn", padx=5, pady=5)
 btn_update = tk.Button(frame_buttons, text="Update", command=edit_task)
 btn_update.pack(side="top", padx=5, pady=5)
 
-btn_delete = tk.Button(frame_buttons, text="Delete", command=delete_task)
+btn_delete = tk.Button(frame_buttons, text="Delete", command=exclude_task)
 btn_delete.pack(side="top", padx=5, pady=5)
 
 
