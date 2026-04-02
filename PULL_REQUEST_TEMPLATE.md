@@ -1,3 +1,5 @@
+<!-- PULL_REQUEST_TEMPLATE.md -->
+
 # Pull Request Template
 
 Thank you for your contribution! Please fill out the following details to help us review your PR.
@@ -23,3 +25,5 @@ Thank you for your contribution! Please fill out the following details to help u
 
 ## Additional Notes
 *Add any other context, screenshots, or information here.*
+
+<!-- END PULL_REQUEST_TEMPLATE.md -->

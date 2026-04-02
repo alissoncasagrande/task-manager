@@ -1,3 +1,5 @@
+<!-- todo-list.md -->
+
 # Project: Task-Manager - TODO-LIST
 *Language: Portuguese-Brasil (PT-BR)*
 *Este arquivo funciona como um quadro Kanban simples (ToDo → Progress → Done). Datas no formato DD/MM/YYYY.*
@@ -41,3 +43,6 @@
 📌 → destaque ou prioridade  
 ⚡ → tarefa urgente  
 🕒 → prazo ou data
+
+
+<!-- END todo-list.md -->

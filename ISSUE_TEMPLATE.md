@@ -1,3 +1,5 @@
+<!-- ISSUE_TEMPLATE.md -->
+
 # Issue Template
 
 Thank you for taking the time to report a bug or suggest an improvement!
@@ -29,3 +31,5 @@ Thank you for taking the time to report a bug or suggest an improvement!
 
 ## Additional Context
 *Add any other context, screenshots, or logs about the issue here.*
+
+<!-- END ISSUE_TEMPLATE.md -->

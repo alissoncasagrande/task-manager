@@ -1,3 +1,5 @@
+<!-- README.md -->
+
 # TASK MANAGER Project
 A simple task manager built with Python and SQL Database.
 
@@ -90,3 +92,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ![Repo size](https://img.shields.io/github/repo-size/AlissonCasagrande/task-manager)
 ![Last commit](https://img.shields.io/github/last-commit/AlissonCasagrande/task-manager)
 ![Issues](https://img.shields.io/github/issues/AlissonCasagrande/task-manager)
+
+
+<!-- END README.md -->

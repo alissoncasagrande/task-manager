@@ -48,3 +48,5 @@ conexao.commit()
 conexao.close()
 
 print("Database and structures created successfully!")
+
+##END setup_db.py

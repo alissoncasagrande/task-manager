@@ -1,3 +1,4 @@
+<!-- CONTRIBUTING.md -->
 # Contributing to Task Manager
 
 At the moment, this project is being developed by **Alisson Guindo Casagrande** only.  
@@ -20,3 +21,5 @@ When contributions are open:
 ## Issues
 
 If you find a bug or have a suggestion, please open an issue in the repository.
+
+<!-- END CONTRIBUTING.md -->

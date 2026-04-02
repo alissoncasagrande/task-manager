@@ -5,6 +5,10 @@
 __pycache__/
 *.pyc
 
+# Nesta pasta faço copias do projeto em txt
+__copiaemtxt__
+copia_txt.bat
+
 # Ignorar ambientes virtuais
 venv/
 .env/
