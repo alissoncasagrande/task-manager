@@ -6,8 +6,7 @@ __pycache__/
 *.pyc
 
 # Nesta pasta faço copias do projeto em txt
-__copiaemtxt__
-copia_txt.bat
+__taskmanager.txt
 
 # Ignorar ambientes virtuais
 venv/
