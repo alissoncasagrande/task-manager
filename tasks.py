@@ -14,6 +14,8 @@ This module relies on the database schema defined in setup_db.py, so ensure that
 from datetime import datetime
 
 class Task:
+    valid_status = ("todo", "in-progress", "done")
+
     def __init__(self, id=None, title="", description="", status="todo", create_date=None, updated_date=None):
         self.id = id
         self.title = title
