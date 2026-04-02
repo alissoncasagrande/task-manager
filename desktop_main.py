@@ -1,49 +1,133 @@
-## desktop_main.py ##
+'''
+desktop_main.py
+-------
+
+This is the desktop_main entry point for the application on GUI Desktop.
+It initializes the application, sets up necessary configurations, and starts the main loop.
+Author: Alisson Guindo Casagrande (https://github.com/AlissonCasagrande/task-manager)
+Date: 2024-06-01
+License: MIT License
+'''
 
 import tkinter as tk
 from tkinter import ttk
 import sqlite3
 from tasks import Task
+from datetime import datetime
 
-def list_update():
+def edit_task():
+    selected = tree.selection()
+    if selected:
+        values = tree.item(selected[0])['values']
+        task_id = values[0]
+        print("Editar tarefa:", task_id)
+        # aqui você pode abrir uma janela Toplevel para editar
+
+def delete_task():
+    selected = tree.selection()
+    if selected:
+        values = tree.item(selected[0])['values']
+        task_id = values[0]
+        print("Excluir tarefa:", task_id)
+        # aqui você chama Task.delete_task(conn, task_id)
+        status_filter()  # atualiza a tabela
+
+def status_filter():
+    print("Status selecionado:", status.get())
     # limpa a tabela
     for item in tree.get_children():
         tree.delete(item)
     # busca tarefas do banco
     tasks = Task.list_tasks(conn)
-    for t in tasks:
-        tree.insert("", "end", values=(t.id, t.title, t.status, t.create_date))
+    if status.get() is not None:
+        selected = [t for t in tasks if t.status == status.get()]
+
+        for t in selected:
+            #Parse the string into a date variable
+            update_dt = datetime.strptime(t.updated_date, "%Y-%m-%d %H:%M:%S") 
+            #format the date for an output format (we can manipulate these formats later for others languages)
+            update_str = update_dt.strftime("%d/%m/%Y %H:%M:%S")
+            tree.insert("", "end", values=(t.id, t.title, t.status, update_str))
+
+    return
 
 
-def atualizar_status():
-    print("Status selecionado:", status.get())
-
-
-#main
+# main #####
 conn = sqlite3.connect("task_manager.db")
 
+#create the window instance
 win = tk.Tk()
 win.title("Task Manager")
 
-# variável que guarda a escolha
-status = tk.StringVar(value="Todo")
+#variável que guarda a escolha
+status = tk.StringVar(value=Task.valid_status[0])
 
 tk.Label(win, text="Status:").grid(row=0, column=0,padx=5,pady=5)
 
-tk.Radiobutton(win, text="Todo", variable=status, value="Todo", command=atualizar_status).grid(row=0, column=1, padx=5, pady=5)
-tk.Radiobutton(win, text="In-progress", variable=status, value="In-progress", command=atualizar_status).grid(row=0, column=2, padx=5, pady=5)
-tk.Radiobutton(win, text="Done", variable=status, value="Done", command=atualizar_status).grid(row=0, column=3, padx=5, pady=5)
+tk.Radiobutton(win, text="Todo", variable=status, value=Task.valid_status[0], command=status_filter).grid(row=0, column=1, padx=5, pady=5)
+tk.Radiobutton(win, text="In-progress", variable=status, value=Task.valid_status[1], command=status_filter).grid(row=0, column=2, padx=5, pady=5)
+tk.Radiobutton(win, text="Done", variable=status, value=Task.valid_status[2], command=status_filter).grid(row=0, column=3, padx=5, pady=5)
+
+frame_table=tk.Frame(win)
+frame_table.grid(row=4,column=0, columnspan=4,padx=5, pady=5)
+
+cols = ("id", "title", "status", "updated")
+tree = ttk.Treeview(frame_table, columns=cols, show="headings",selectmode="browse")
+
+tree.heading("id", text="ID")
+tree.column("id", width=30,anchor="center")
+tree.heading("title", text="Title")
+tree.column("title", width=200, anchor="w")
+tree.heading("status", text="Status")
+tree.column("status", width=100, anchor="center")
+tree.heading("updated", text="Updated")
+tree.column("updated", width=150, anchor="center")
+#tree.bind("<Double-1>", lambda e: print(tree.item(tree.selection()[0])['values'][1]))
+
+tree.pack(side="left", fill="both", expand=True)
+#tree.grid(row=4, column=0, columnspan=4, padx=5, pady=5)
+
+verticalSB = tk.Scrollbar(frame_table,orient="vertical",command=tree.yview)
+tree.configure(yscrollcommand=verticalSB.set)
+#verticalSB.grid(row=4, column=5, sticky="ns")
+verticalSB.pack(side="right", fill="y")
 
 
-cols = ("ID", "Título", "Status", "Criado em")
-tree = ttk.Treeview(win, columns=cols, show="headings")
-for col in cols:
-    tree.heading(col, text=col)
-tree.grid(row=4, column=0, columnspan=4, padx=5, pady=5)
+# Label para mostrar descrição
+tk.Label(win, text="Description:").grid(row=6, column=0, sticky="w", padx=5, pady=(5,0))
 
-# Botão para atualizar lista completa
-tk.Button(win, text="Mostrar todas", command=list_update).grid(row=5, column=0, columnspan=4, pady=10)
+# Criar um frame para manter o texto e a barra de rolagem do texto junto.
+frame_desc = tk.Frame(win)
+frame_desc.grid(row=7, column=0, columnspan=3, sticky="w", padx=5, pady=(0,5))
+
+# Campo para conter o valor da descricao
+desc_text = tk.Text(frame_desc, height=5, width=40, wrap="word")
+desc_text.pack(side="left", fill="both", expand=True)
+
+scroll_desc = tk.Scrollbar(frame_desc, orient="vertical", command=desc_text.yview)
+scroll_desc.pack(side="right", fill="y")
+
+desc_text.configure(yscrollcommand=scroll_desc.set)
+
+
+
+#load of the table (first time).
+status_filter()
+
+# Botão para atualizar e deletar, quando selecionado
+
+frame_buttons = tk.Frame(win)
+frame_buttons.grid(row=7, column=3, sticky="wn", padx=5, pady=5)
+
+btn_update = tk.Button(frame_buttons, text="Update", command=edit_task)
+btn_update.pack(side="top", padx=5, pady=5)
+
+btn_delete = tk.Button(frame_buttons, text="Delete", command=delete_task)
+btn_delete.pack(side="top", padx=5, pady=5)
+
 
 win.mainloop()
+
+# end main #####
 
 ## END desktop_main.py ##
