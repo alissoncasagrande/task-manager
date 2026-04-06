@@ -7,7 +7,6 @@
 ---
 
 ## 📋 ToDo
-- [ ] Interface Desktop (Tkinter/PyQt)(roadmap)
 - [ ] Interface Web com Django (roadmap)
 - [ ] API REST para integração(roadmap)
 - [ ] Frontend moderno (React/Vue/Angular) (roadmap)
@@ -15,6 +14,13 @@
 ---
 
 ## 🛠️ Progress
+- [X] Interface Desktop (Tkinter/PyQt)(roadmap)
+  - [X] Tela principal (geral) 
+  - [X] Ajustar o campo Description (popular os valores)
+  - [X] Tela de Insert/Update - (update ok)
+  - [X] Tela principal (adcionar botao de NEW)
+- [ ] Atualizar Git.
+- [ ] Atualizar documentacao README.
 
 ---
 
@@ -44,5 +50,8 @@
 ⚡ → tarefa urgente  
 🕒 → prazo ou data
 
+<!--
+- [ ] ***(template)***
+-->
 
 <!-- END todo-list.md -->

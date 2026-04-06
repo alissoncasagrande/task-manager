@@ -9,12 +9,15 @@ Main responsibilities:
 - Implement class methods for CRUD operations that interact with the database.  
 - Ensure that the Task class can be easily used by other parts of the application to manage tasks.
 This module relies on the database schema defined in setup_db.py, so ensure that the database is set up before using this class.
+
+Date: 2026-04-01
+License: MIT License
 '''
 
 from datetime import datetime
 
 class Task:
-    valid_status = ("todo", "in-progress", "done")
+    valid_status = ("todo", "in_progress", "done")
 
     def __init__(self, id=None, title="", description="", status="todo", create_date=None, updated_date=None):
         self.id = id
@@ -28,7 +31,8 @@ class Task:
     @classmethod
     def create_task(cls, conn, title, description, status="todo"):
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO TASKS (title, description, status) VALUES (?, ?, ?)", (title, description, status))
+        clear_status= status.lower().replace('-','_')
+        cursor.execute("INSERT INTO TASKS (title, description, status) VALUES (?, ?, ?)", (title, description, clear_status))
         conn.commit()
         task_id = cursor.lastrowid # lastrowid retorna o ID da última linha inserida
 

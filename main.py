@@ -5,6 +5,7 @@ main.py
 This is the main entry point for the application on terminal. 
 It initializes the application, sets up necessary configurations, and starts the main loop.
 Author: Alisson Guindo Casagrande (https://github.com/AlissonCasagrande/task-manager)
+
 Date: 2024-06-01
 License: MIT License
 '''

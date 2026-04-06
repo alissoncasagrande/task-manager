@@ -11,6 +11,8 @@ Main responsibilities:
 - Ensure the database schema is ready before the application runs.
 
 This script should be executed once during project setup, or whenever the database needs to be reset.
+Date: 2026-04-01
+License: MIT License
 """
 
 import sqlite3
