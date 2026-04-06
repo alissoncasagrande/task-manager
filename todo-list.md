@@ -14,13 +14,6 @@
 ---
 
 ## 🛠️ Progress
-- [X] Interface Desktop (Tkinter/PyQt)(roadmap)
-  - [X] Tela principal (geral) 
-  - [X] Ajustar o campo Description (popular os valores)
-  - [X] Tela de Insert/Update - (update ok)
-  - [X] Tela principal (adcionar botao de NEW)
-- [ ] Atualizar Git.
-- [ ] Atualizar documentacao README.
 
 ---
 
@@ -44,6 +37,15 @@
 - [x] Criar seção Roadmap público no README (futuras etapas: Django, API REST, Frontend, AWS)
 - [x] Documentar no README prints do CRUD rodando no terminal
 - [x] Versão inicial em CLI (terminal)(roadmap)
+- [X] Interface Desktop (Tkinter/PyQt)(roadmap) (2026/04/06)
+  - [X] Tela principal (geral) (2026/04/06)
+  - [X] Ajustar o campo Description (popular os valores)(2026/04/06)
+  - [X] Tela de Insert/Update - (update ok)(2026/04/06)
+  - [X] Tela principal (adcionar botao de NEW)(2026/04/06)
+- [x] Atualizar Git.(2026/04/06)
+- [x] Atualizar documentacao README.(2026/04/06)
+
+
 ---
 
 📌 → destaque ou prioridade  

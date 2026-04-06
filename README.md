@@ -19,63 +19,106 @@ It allows users to create, view, update, and delete tasks through a basic termin
    python setup_db.py
    ```
 3. Start the application:
-   ```
-   python main.py
-   ```
+   Choose your preferred interface to run the project:
+   - For CLI (Terminal):
+      ```
+      python main.py
+      ```
+   - For GUI (Desktop Window):
+      ```
+      python desktop_main.py
+      ```
 ### Requirements
 - Python 3.x installed on your system.
 - Standard library modules:
-   - sqlite3
-   - os
-   - datetime
+   - sqlite3, os, datetime, tkinter
 
-> Note: All modules listed above are part of Python's standard library, no extra installation required.
+> **Note:** Most modules are part of Python's standard library. However, some Linux distributions (like Ubuntu/Debian) do not include Tkinter by default. 
+> If you encounter an error, you may need to install it manually:
+```
+sudo apt update
+sudo apt install python3-tk
+```
 
-## 🖥️ Como usar (CLI)
-A versão atual roda no terminal.  
-Fluxo básico:
-1. Inicie o programa com `python main.py`
-2. Escolha no menu principal:
-   - `1` → Listar tarefas
-   - `2` → Adicionar tarefa
-   - `Q` → Sair
-3. Dentro de uma tarefa, você pode editar ou excluir.
+## 🖥️ Usage on GUI/Desktop window
+1. Use the terminal for launch the application:
+`python desktop_main.py`
+2. The main window will display the current task list. From there, you can:
+   - Click "Add Task" to create a new entry.
+   - Select an existing task to Update its details or Delete it from the database.
+
+## 📸 Screenshots (GUI)
+
+### Main Dashboard & Status Filtering
+![Main Dashboard](docs/img/gui/gui_main.png) <br>
+*View and filter your tasks by status.*
+
+---
+
+### Creating a New Task
+![New Task](docs/img/gui/gui_newtask.png) <br>
+*Modal window for task input*
+
+---
+
+### Editing Task Details
+![Update Task](docs/img/gui/gui_update.png) <br>
+![Success on Update](docs/img/gui/gui_update_with_success.png)<br>
+*Updating existing records with success feedback.*
+
+---
+
+### Data Safety (Delete task)
+![Delete Task](docs/img/gui/gui_delete.png) <br>
+*Confirmation prompt before deleting a task.*
+
+---
+
+## 🖥️ Usage (CLI)
+The terminal interface allows for quick task management.
+**Basic Workflow:**
+1. Launch the application: `python main.py`
+2. Main menu options:
+   - `1` → List Tasks: View all recorded entries.
+   - `2` → Add task: Create a new record in the database.
+   - `Q` → Quit: Safely close the application.
+3. Once a task is selected, you can perform **Update** or **Delete** actions.
 
 ## 📸 Screenshots (CLI)
 
-### Menu principal
-![Menu principal](docs/img/cli/terminal_menu.png)
+### Main Menu
+![Main Menu](docs/img/cli/terminal_menu.png)
 
-### Adicionar tarefa
+### Add Task
 ![Add Task](docs/img/cli/terminal_insert.png)
 
-### Listar tarefas
+### List Tasks
 ![List Tasks](docs/img/cli/terminal_list.png)
 
-### Visualizar detalhes
+### View details
 ![View Task](docs/img/cli/terminal_details.png)
 
-### Editar tarefa
+### Edit task
 ![Edit Task](docs/img/cli/terminal_update_task.png)
 
-### Deletar tarefa
+### Delete task
 ![Delete Task](docs/img/cli/terminal_delete_task.png)
 
 ---
 
-## Interfaces disponíveis
-- **CLI (Terminal)** → já implementada (prints acima)
-- **Desktop GUI (Tkinter/PyQt)** → em desenvolvimento
-- **Mobile (Kivy)** → planejada
-- **Web (Django/Flask)** → planejada
+## Available Interfaces
+- **CLI (Terminal)** → currently implemented (see screenshots above)
+- **Desktop GUI (Tkinter-based)** → Fully implemented and functional
+- **Mobile (Kivy)** → Planned/Upcoming.
+- **Web (Django/Flask)** → Planned/In development.
 
 ## 🚀 Roadmap
-- [x] Versão inicial em CLI (terminal)
-- [ ] Interface Desktop (Tkinter/PyQt)
-- [ ] Interface Web com Django
-- [ ] API REST para integração
-- [ ] Frontend moderno (React/Vue/Angular)
-- [ ] Deploy em AWS (EC2, RDS, S3)
+- [x] Initial CLI version (Terminal)
+- [x] Desktop Interface (Tkinter)
+- [ ] Web Interface with Django
+- [ ] REST API for integration
+- [ ] Modern Frontend (React/Vue/Angular)
+- [ ] AWS Cloud Deployment (EC2, RDS, S3)
 
 ## Credits
 [Alisson Guindo Casagrande] (https://github.com/AlissonCasagrande) (2026)
